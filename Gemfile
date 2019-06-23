@@ -84,3 +84,9 @@ gem 'font-awesome-rails'
 
 # Adds user authentication
 gem 'devise'
+
+# Adds converting address to coordinates
+gem 'geocoder'
+
+# Adds ENV configuration
+gem 'figaro'
