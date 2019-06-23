@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Adds jquery for rails
 gem 'jquery-rails'
 
+# Adds bootstrap
 gem 'popper_js', '~> 1.11.1'
 gem 'bootstrap', '4.0.0.alpha6'
 
@@ -71,11 +72,15 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
-# adds forms
+# Adds forms
 gem 'simple_form'
 
-# adds symbols
+# Adds pagination
+# https://github.com/kaminari/kaminari
+gem 'kaminari'
+
+# Adds symbols
 gem 'font-awesome-rails'
 
-# adds user authentication
+# Adds user authentication
 gem 'devise'
