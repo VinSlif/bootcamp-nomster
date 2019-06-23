@@ -71,6 +71,11 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
+# adds forms
 gem 'simple_form'
 
+# adds symbols
 gem 'font-awesome-rails'
+
+# adds user authentication
+gem 'devise'
