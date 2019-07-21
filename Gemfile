@@ -90,3 +90,9 @@ gem 'geocoder'
 
 # Adds ENV configuration
 gem 'figaro'
+
+# Adds image uploading
+gem 'carrierwave', '~> 1.0'
+
+# Adds aws integration
+gem 'fog-aws'

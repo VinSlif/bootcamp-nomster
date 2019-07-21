@@ -6,10 +6,13 @@
 
 	<p><%= @place.description %></p>
 
+	<% @place.photos.each do |photo| %>
+		<%= image_tag photo.picture.url %>
+		<p><%= photo.caption %></p>
+	<% end %>
+
 	<% if @place.latitude.present? && @place.longitude.present? %>
-
 	<script>
-
 		function initMap() {
 			var myLatLng = { lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 			var map = new google.maps.Map(document.getElementById('map'), {
@@ -23,9 +26,7 @@
 			});
 		}
 	</script>
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUvknd23fDCnaVfaW9YEgYi94wcz6qg44&callback=initMap"></script>
-
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUvknd23fDCnaVfaW9YEgYi94wcz6qg44&callback=initMap"></script>
 	<div id="map"></div>
 	<% end %>
 	<br />
@@ -43,15 +44,18 @@
 <div class="col-10 offset-1">
 	<h1 class="float-left">Comments</h1>
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#commentModal">
 		Add a comment
+	</button>
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#photoModal">
+		Add a Photo
 	</button>
 </div>
 
 <div class="clear"></div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Comment Modal -->
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -73,6 +77,31 @@
 		</div>
 	</div>
 </div>
+
+<!-- Photo Modal -->
+<div class="modal fade" id="photoModal" tabindex="-2" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Add a comment</h4>
+			</div>
+			<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+			<div class="modal-body">
+				<%= f.input :picture %>
+				<%= f.input :caption %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
 
 <div class="row">
 	<% @place.comments.each do |comment| %>

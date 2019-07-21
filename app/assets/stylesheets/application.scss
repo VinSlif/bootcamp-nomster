@@ -21,6 +21,8 @@ body {
 	background: image_url('floor-tile.png');
 	/* Verdana-based sans serif stack */
 	font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+	/* Prevents horizontal scroll from showing, rails seems to always do this? */
+	overflow-x: hidden;
 }
 
 .navbar {
