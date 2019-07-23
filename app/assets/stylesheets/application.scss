@@ -92,3 +92,9 @@ blockquote p {
 	position: absolute;
 	left: 0;
 }
+
+.picture-preview {
+	width: 40%;
+	max-height: 200px;
+	object-fit: contain;
+}
